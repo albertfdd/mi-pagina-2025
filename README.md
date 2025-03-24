@@ -11,6 +11,7 @@
 <details>
 <summary>Haz clic para ver más</summary>
 
+
 **type="text" → Es un campo de texto normal, para escribir el nombre.**
 
 **name="Nombre" → El nombre del campo (para cuando se envía el formulario).**
