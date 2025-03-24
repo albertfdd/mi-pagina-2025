@@ -8,10 +8,14 @@
 > - css
 > - los .MK
 
->::: warning
->Explicación LABELS
+<details>
+<summary>Haz clic para ver más</summary>
+
 **type="text" → Es un campo de texto normal, para escribir el nombre.**
 
 **name="Nombre" → El nombre del campo (para cuando se envía el formulario).**
 
 **placeholder="Nombre" → Muestra un texto gris como ejemplo antes de escribir.**
+
+</details>
+
