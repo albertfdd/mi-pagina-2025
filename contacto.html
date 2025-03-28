@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página de contacto - Albert Fernández">
+  <meta name="author" content="Albert Fernández Díaz">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Contacto</h1>
+    <nav role="navigation" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="hobbies.html">Hobbies</a></li>
+        <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        <li><a href="microjuego.html">Microjuego</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main role="main">
+    <section class="contact-section">
+      <h2>Formulario de Contacto</h2>
+      <p>Si deseas ponerte en contacto conmigo, puedes rellenar el siguiente formulario:</p>
+      
+      <form method="post" action="#" class="contact-form">
+        <section class="form-section">
+          <h3>Datos personales</h3>
+          
+          <p class="form-field">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </p>
+          
+          <p class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="tu.email@ejemplo.com" required>
+          </p>
+          
+          <p class="form-field">
+            <label for="numero">Teléfono:</label>
+            <input type="tel" id="numero" name="numero" placeholder="123456789" pattern="[0-9]{9}" required>
+          </p>
+        </section>
+        
+        <section class="form-section">
+          <h3>Detalles del mensaje</h3>
+          
+          <p class="form-field">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí" required></textarea>
+          </p>
+        
+        </section>
+        
+        <section class="form-section">
+          <h3 class="visually-hidden">Términos y condiciones</h3>
+          <p class="checkbox-field">
+            <input type="checkbox" id="terminos" name="terminos" required>
+            <label for="terminos">Acepto los términos y condiciones</label>
+          </p>
+        </section>
+        
+        <menu type="toolbar">
+          <li><button type="submit">Enviar mensaje</button></li>
+          <li><button type="reset">Limpiar formulario</button></li>
+        </menu>
+      </form>
+      
+      <aside class="contact-info">
+        <h3>Información de contacto</h3>
+        <address>
+          <p><b>Email:</b> <a href="mailto:albert.fernandez@enti.cat">albert.fernandez@enti.cat</a></p>
+          <p><b>GitHub:</b> <a href="https://github.com/albertfdd" target="_blank" rel="noopener">github.com/albertfdd</a></p>
+        </address>
+      </aside>
+    </section>
+  </main>
+  <footer role="contentinfo">
+    <p>&copy; 2025 Mi Sitio Web - Albert Fernández Díaz</p>
+  </footer>
+</body>
+</html>
