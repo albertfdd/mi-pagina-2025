@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Juego de adivinar números - Un microjuego interactivo">
+  <meta name="author" content="Albert Fernández Díaz">
+  <title>Microjuego - Adivina el Número</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Microjuego</h1>
+    <nav role="navigation" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html" aria-label="Ir a la página principal">Home</a></li>
+        <li><a href="cv.html" aria-label="Ver curriculum vitae">CV</a></li>
+        <li><a href="cv.html#hobbies" aria-label="Ver sección de hobbies">Hobbies</a></li>
+        <li><a href="contacto.html" aria-label="Ir a la página de contacto">Contacto</a></li>
+        <li><a href="microjuego.html" aria-current="page">Microjuego</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main role="main">
+    <article class="game-article">
+      <header>
+        <h2>Bienvenido al Microjuego</h2>
+        <p>Aquí puedes jugar a un pequeño juego interactivo.</p>
+      </header>
+    
+      <section id="game-container" aria-live="polite">
+        <h3>Adivina el número</h3>
+        <p>He pensado un número entre 1 y 100. ¡Intenta adivinarlo!</p>
+        <p id="attempts" aria-live="assertive">Intentos restantes: <mark class="attempts-count">10</mark></p>
+        <p id="hint" aria-live="polite"></p>
+        
+        <form id="guess-form" role="form" aria-labelledby="form-heading">
+          <h4 id="form-heading" class="visually-hidden">Formulario para adivinar el número</h4>
+          <fieldset class="form-group">
+            <legend>Introduce tu intento</legend>
+            <label for="user-guess">Tu número:</label>
+            <input type="number" 
+                   id="user-guess" 
+                   name="user-guess"
+                   min="1" 
+                   max="100" 
+                   required 
+                   aria-label="Introduce un número entre 1 y 100">
+          </fieldset>
+          <button type="submit" 
+                  id="submit-guess" 
+                  aria-label="Comprobar número">Comprobar</button>
+        </form>
+        
+        <output id="result" role="status" aria-live="assertive"></output>
+        <button id="restart-button" 
+                style="display: none;" 
+                aria-label="Reiniciar juego">Jugar de nuevo</button>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Game variables
+      let randomNumber = Math.floor(Math.random() * 100) + 1;
+      let attempts = 10;
+      const guessForm = document.getElementById('guess-form');
+      const userGuess = document.getElementById('user-guess');
+      const attemptsDisplay = document.querySelector('.attempts-count');
+      const hintDisplay = document.getElementById('hint');
+      const resultDisplay = document.getElementById('result');
+      const restartButton = document.getElementById('restart-button');
+      
+      // Submit guess
+      guessForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const guess = parseInt(userGuess.value);
+        attempts--;
+        attemptsDisplay.textContent = attempts;
+        
+        // Check guess
+        if (guess === randomNumber) {
+          endGame(true);
+        } else if (attempts === 0) {
+          endGame(false);
+        } else {
+          // Provide hint
+          if (guess < randomNumber) {
+            hintDisplay.textContent = "El número es mayor que tu intento.";
+          } else {
+            hintDisplay.textContent = "El número es menor que tu intento.";
+          }
+          userGuess.value = '';
+          userGuess.focus();
+        }
+      });
+      
+      // End game function
+      function endGame(isWin) {
+        guessForm.style.display = 'none';
+        hintDisplay.textContent = '';
+        
+        if (isWin) {
+          resultDisplay.textContent = `¡Felicidades! Has adivinado el número ${randomNumber}.`;
+          resultDisplay.setAttribute('class', 'success-message');
+        } else {
+          resultDisplay.textContent = `¡Game Over! El número era ${randomNumber}.`;
+          resultDisplay.setAttribute('class', 'error-message');
+        }
+        
+        restartButton.style.display = 'block';
+        restartButton.focus();
+      }
+      
+      // Restart game
+      restartButton.addEventListener('click', function() {
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+        attempts = 10;
+        attemptsDisplay.textContent = '10';
+        hintDisplay.textContent = '';
+        resultDisplay.textContent = '';
+        resultDisplay.removeAttribute('class');
+        userGuess.value = '';
+        guessForm.style.display = 'block';
+        restartButton.style.display = 'none';
+        userGuess.focus();
+      });
+    });
+  </script>
+  
+  <footer role="contentinfo">
+    <p>&copy; 2025 Mi Sitio Web - Albert Fernández Díaz</p>
+  </footer>
+</body>
+</html>
