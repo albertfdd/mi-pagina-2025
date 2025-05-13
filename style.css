@@ -290,6 +290,28 @@ footer {
 }
 
 /* CV specific styles */
+.cv-layout {
+  display: flex;
+  flex-direction: row-reverse; /* Puts image on the right */
+  gap: 20px; /* Adds some space between text and image */
+  align-items: flex-start; /* Aligns items at the top */
+}
+
+.cv-text {
+  flex-grow: 1; /* Allows text to take available space */
+  margin-left: 0; /* Removes initial margin */
+}
+
+.cv-profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 0; /* Adjusted as needed, can be removed if h2 provides enough top space */
+  margin-bottom: 30px;
+  flex-shrink: 0; /* Prevents image from shrinking */
+}
+
 #cv ul {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
